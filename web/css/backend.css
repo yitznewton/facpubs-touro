@@ -1,0 +1,22 @@
+.backend-main-menu-link{
+  margin: 0 0 1em;
+}
+
+.label{
+  color: #666666;
+  display: block;
+  float: left;
+  font-weight: normal !important;
+  padding: 0 1em 3px 0;
+  text-align: left;
+  width: 8em;
+}
+
+.sf_admin_form_row .content ul{
+  margin-top: 0;
+  padding: 0;
+}
+
+#faculty_schools_list{
+  height: 10.2em;
+}

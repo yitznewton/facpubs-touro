@@ -1,0 +1,90 @@
+Publication:
+  actAs: [Timestampable, SoftDelete]
+  columns:
+    citation: { type: text, notnull: true }
+    citation_stripped: { type: text }
+    publication_date: { type: integer, notnull: true }  # use integer to ease migration from facpubs1
+    publication_type_id: { type: integer, notnull: true }
+  indexes:
+    citation_stripped_index:
+      fields:
+        citation_stripped:
+          length: 50
+  relations:
+    PublicationType:
+      foreignAlias: Publications
+      onDelete: RESTRICT
+    Subjects:
+      class: Subject
+      refClass: PublicationSubject
+      local: publication_id
+      foreign: subject_id
+      foreignAlias: Publications
+      
+Faculty:
+  actAs: [Timestampable, Sluggable, SoftDelete]
+  columns:
+    last_name: { type: string(100), notnull: true }
+    first_name: { type: string(100), notnull: true }
+  indexes:
+    name_index:
+      fields:
+        last_name: []
+        first_name: []
+  relations:
+    Publications:
+      class: Publication
+      refClass: FacultyPublication
+      local: faculty_id
+      foreign: publication_id
+      foreignAlias: Facultys
+    Schools:
+      class: School
+      refClass: FacultySchool
+      local: faculty_id
+      foreign: school_id
+      foreignAlias: Facultys
+
+Subject:
+  columns:
+    name: { type: string(100), notnull: true }
+
+PublicationType:
+  columns:
+    name: { type: string(100), notnull: true }
+
+School:
+  actAs: [Sluggable]
+  columns:
+    name: { type: string(255), notnull: true }
+
+PublicationSubject:
+  columns:
+    publication_id: { type: integer, primary: true }
+    subject_id: { type: integer, primary: true }
+  relations:
+    Publication:
+      onDelete: CASCADE
+    Subject:
+      onDelete: CASCADE
+
+FacultyPublication:
+  columns:
+    faculty_id: { type: integer, primary: true }
+    publication_id: { type: integer, primary: true }
+  relations:
+    Faculty:
+      onDelete: CASCADE
+    Publication:
+      onDelete: CASCADE
+    
+FacultySchool:
+  columns:
+    faculty_id: { type: integer, primary: true }
+    school_id: { type: integer, primary: true }
+  relations:
+    Faculty:
+      onDelete: CASCADE
+    School:
+      onDelete: CASCADE
+  

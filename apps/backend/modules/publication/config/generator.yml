@@ -1,0 +1,42 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           publication
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          publication
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions:
+        _save_and_add: { label: Save and create another }
+      fields:
+        citation_stripped: { label: Citation }
+        citation_teaser: { label: Citation }
+        publication_type_string: { label: Type }
+        faculty_string: { label: Faculty }
+        publication_type_id: { label: Type }
+        publication_date: { label: Date }
+        subjects_list: { label: Subject }
+        facultys_list: { label: Faculty }
+      list:
+        display:
+          - =citation_teaser
+          - publication_type_string
+          - publication_date
+          - faculty_string
+        table_method: backendIndex
+      filter:
+        display:
+          - citation_stripped
+          - facultys_list
+          - publication_date
+          - subjects_list
+          - publication_type_id
+      form:    ~
+      edit:    ~
+      new:     ~

@@ -1,0 +1,3 @@
+[submodule "plugins/ynWidgetAjaxAutocompletePlugin"]
+	path = plugins/ynWidgetAjaxAutocompletePlugin
+	url = git://github.com/yitznewton/ynWidgetAjaxAutocompletePlugin.git

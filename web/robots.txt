@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /backend.php/
+Disallow: /backend_dev.php/
+
