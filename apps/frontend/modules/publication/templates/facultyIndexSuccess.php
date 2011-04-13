@@ -1,6 +1,6 @@
 <?php slot('title', sprintf('Publications for %s %s', $faculty->getFirstName(), $faculty->getLastName())) ?>
 
-<div class="breadcrumb"><?php echo link_to('Home', 'publication/index') ?></div>
+<div class="breadcrumb"><?php echo link_to('Home', '@homepage') ?></div>
 
 <h2>Publications for <?php echo $faculty->getFirstName() ?> <?php echo $faculty->getLastName() ?></h2>
 

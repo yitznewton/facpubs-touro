@@ -1,6 +1,6 @@
 <?php slot('title', 'Faculty for '.$school) ?>
 
-<div class="breadcrumb"><?php echo link_to('Home', 'publication/index') ?></div>
+<div class="breadcrumb"><?php echo link_to('Home', '@homepage') ?></div>
 
 <?php if ( $school->getFacultys()->count() ): ?>
 <h2>Faculty for <?php echo $school->getName() ?></h2>
