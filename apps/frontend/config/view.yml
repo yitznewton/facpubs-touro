@@ -13,9 +13,10 @@ default:
     #robots:       index, follow
 
   stylesheets:
-    - ui-lightness/jquery-ui-1.8.11.custom.css
+    - ui-custom/jquery-ui-1.8.12.custom.css
     - global.css
     - frontend.css
+    - local-frontend.css
 
   javascripts:
     - jquery-1.5.2.min.js

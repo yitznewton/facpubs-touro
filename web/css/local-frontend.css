@@ -1,0 +1,16 @@
+#content{
+  font-size: 14px;
+}
+
+#publication-tabs{
+  margin: 2em 0 0;
+}
+
+.frontend-publication-filter{
+  font-size: 0.8em;
+  padding: 1em 0.4em;
+}
+.frontend-publication-filter-fields li{
+  padding: 0 0.4em;
+}
+
