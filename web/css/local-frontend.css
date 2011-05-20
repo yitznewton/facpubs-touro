@@ -27,3 +27,6 @@
 .ui-autocomplete .ui-menu-item{
   margin: 0.4em 0.6em;
 }
+.ui-tabs .ui-tabs-panel{
+  padding: 1em;
+}
