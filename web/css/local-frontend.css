@@ -5,6 +5,19 @@
   margin: 2em 0 0;
 }
 .frontend-publication-filter{
+  border: 1px solid #ccc;
+  margin-top: 0.6em;
+}
+.frontend-publication-results{
+  margin: 1em 1em 2em 1.4em;
+}
+.frontend-publication-results li{
+  list-style: none;
+}
+.frontend-publication-results p{
+  font-size: 0.9em;
+}
+.frontend-publication-filter{
   font-size: 0.8em;
   padding: 1em 0.4em;
 }
