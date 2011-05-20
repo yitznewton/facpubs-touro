@@ -13,14 +13,15 @@ default:
     #robots:       index, follow
 
   stylesheets:
+    - /tc/drupal.css: { media: all }
+    - /tc/drupal-p.css: { media: print }
     - ui-custom/jquery-ui-1.8.12.custom.css
     - global.css
     - frontend.css
     - local-frontend.css
 
   javascripts:
-    - jquery-1.5.2.min.js
-    - jquery-ui-1.8.11.custom.min.js
+    - /tc/drupal.js
     - global.js
     - frontend.js
 

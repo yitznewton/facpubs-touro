@@ -1,11 +1,9 @@
 #content{
   font-size: 14px;
 }
-
 #publication-tabs{
   margin: 2em 0 0;
 }
-
 .frontend-publication-filter{
   font-size: 0.8em;
   padding: 1em 0.4em;
@@ -13,4 +11,19 @@
 .frontend-publication-filter-fields li{
   padding: 0 0.4em;
 }
-
+.ui-autocomplete{
+  width: 300px;
+}
+.ui-autocomplete a{
+  padding: 3px;
+}
+.ui-autocomplete a:hover{
+  background: #fbf9ee;
+  text-decoration: none;
+  color: #2961B0;
+  padding: 2px;
+  cursor: pointer;
+}
+.ui-autocomplete .ui-menu-item{
+  margin: 0.4em 0.6em;
+}
