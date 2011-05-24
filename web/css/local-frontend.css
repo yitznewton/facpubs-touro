@@ -21,6 +21,9 @@
   font-size: 0.8em;
   padding: 1em 0.4em;
 }
+.frontend-publication-filter-fields select{
+  margin: 0;  /* Chrome */
+}
 .frontend-publication-filter-fields li{
   padding: 0 0.4em;
 }
