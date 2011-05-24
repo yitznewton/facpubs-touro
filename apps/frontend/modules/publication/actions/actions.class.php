@@ -73,6 +73,7 @@ class publicationActions extends sfActions
       ->execute()
       ;
     
+    $this->publication_count = Doctrine_Core::getTable('Publication')->findAll()->count();
     $this->getResponse()->setSlot('title', 'Statistics');
   }
 

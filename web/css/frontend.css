@@ -2,46 +2,40 @@ body{
   font-family: Verdana, Arial;
   font-size: 14px;
 }
-
 .frontend-publication-filter{
   font-size: 0.9em;
   margin: 0 auto 1em;
   padding: 1em 1em;
   background: #eee;
 }
-
 .frontend-publication-filter-fields{
   margin: auto;
   padding: 0;
 }
-
 .frontend-publication-filter-fields li{
   list-style: none;
   float: left;
   margin: 0;
   padding: 0 0.8em;
 }
-
+table.statistics td.numeric{
+  text-align: right;
+}
 #faculty-autocomplete-container{
   display: none;
 }
-
 #filter-field-q{
 /*  width: 10em;*/
 }
-
 #filter-field-subject{
   width: 8em;
 }
-
 #filter-field-type{
   width: 8em;
 }
-
 #filter-field-year{
   width: 3em;
 }
-
 #filter-submit{
   font-size: 0.9em;
 }

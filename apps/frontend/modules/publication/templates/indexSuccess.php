@@ -1,6 +1,6 @@
 <p class="publication-total">
   Total number of publications:
-  <?php echo link_to( $publication_count, 'publication/statistics' ) ?>
+  <?php echo link_to( number_format($publication_count), 'publication/statistics' ) ?>
 </p>
 
 <div id="publication-tabs">
