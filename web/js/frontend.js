@@ -3,6 +3,7 @@ $( function() {
 
   if ( source ) {
     FP.$$('faculty-autocomplete-container').style.display = 'block';
+    FP.$$('faculty-autocomplete-submit').style.display = 'none';
 
     $( FP.$$('faculty-autocomplete') ).autocomplete({
       source: source,
@@ -10,6 +11,9 @@ $( function() {
       minLength: 2,
       select: function(e, ui) {
         this.item_id = ui.item.id;
+        
+        // "submit" the form programatically using the redirect in onsubmit()
+        this.parentNode.onsubmit();
       }
     });
 

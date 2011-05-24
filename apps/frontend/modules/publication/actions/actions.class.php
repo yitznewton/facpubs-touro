@@ -56,6 +56,7 @@ class publicationActions extends sfActions
   {
     $this->by_subject = Doctrine_Core::getTable('Subject')->createQuery('s')
       ->select('count(p.id) as num_publications')
+      ->addSelect('s.id')
       ->addSelect('s.name')
       ->leftJoin('s.Publications p')
       ->groupBy('s.id')
@@ -65,6 +66,7 @@ class publicationActions extends sfActions
     
     $this->by_school = Doctrine_Core::getTable('School')->createQuery('s')
       ->select('count(p.id) as num_publications')
+      ->addSelect('s.slug')
       ->addSelect('s.name')
       ->leftJoin('s.Facultys f')
       ->leftJoin('f.Publications p')
@@ -73,6 +75,7 @@ class publicationActions extends sfActions
       ->execute()
       ;
     
+    $this->publication_count = Doctrine_Core::getTable('Publication')->findAll()->count();
     $this->getResponse()->setSlot('title', 'Statistics');
   }
 
