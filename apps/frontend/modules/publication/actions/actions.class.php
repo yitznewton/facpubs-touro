@@ -73,6 +73,11 @@ class publicationActions extends sfActions
 
     $this->buildPager( $query, $page );
   }
+  
+  public function execute404( sfWebRequest $request )
+  {
+    $this->getResponse()->setSlot('title', 'Page not found');
+  }
 
   protected function buildPager( Doctrine_Query $query, $page )
   {
