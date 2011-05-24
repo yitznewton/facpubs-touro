@@ -21,8 +21,27 @@
   font-size: 0.8em;
   padding: 1em 0.4em;
 }
+.frontend-publication-filter-fields select{
+  margin: 0;  /* Chrome */
+}
 .frontend-publication-filter-fields li{
   padding: 0 0.4em;
+}
+table.statistics{
+  border: 0;
+  margin: 0.4em 0 0.8em;
+}
+table.statistics tbody{
+  border: 0;
+}
+table.statistics td{
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: #bbb;
+  padding: 0.4em 0.8em;
+}
+table.statistics td.numeric{
+  text-align: right;
 }
 .ui-autocomplete{
   width: 300px;

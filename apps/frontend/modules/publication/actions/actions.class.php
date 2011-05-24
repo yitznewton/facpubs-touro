@@ -48,6 +48,33 @@ class publicationActions extends sfActions
       ->where('EXISTS (SELECT fs.faculty_id FROM FacultySchool fs WHERE fs.school_id=s.id)')
       ->execute()
       ;
+    
+    $this->publication_count = Doctrine_Core::getTable('Publication')->findAll()->count();
+    $this->getResponse()->setSlot('title', 'Faculty Publications');
+  }
+  
+  public function executeStatistics( sfWebRequest $request )
+  {
+    $this->by_subject = Doctrine_Core::getTable('Subject')->createQuery('s')
+      ->select('count(p.id) as num_publications')
+      ->addSelect('s.name')
+      ->leftJoin('s.Publications p')
+      ->groupBy('s.id')
+      ->orderBy('s.name')
+      ->execute()
+      ;
+    
+    $this->by_school = Doctrine_Core::getTable('School')->createQuery('s')
+      ->select('count(p.id) as num_publications')
+      ->addSelect('s.name')
+      ->leftJoin('s.Facultys f')
+      ->leftJoin('f.Publications p')
+      ->groupBy('s.id')
+      ->orderBy('s.name')
+      ->execute()
+      ;
+    
+    $this->getResponse()->setSlot('title', 'Statistics');
   }
 
   public function executeFacultyIndex( sfWebRequest $request )
@@ -72,6 +99,11 @@ class publicationActions extends sfActions
     }
 
     $this->buildPager( $query, $page );
+  }
+  
+  public function execute404( sfWebRequest $request )
+  {
+    $this->getResponse()->setSlot('title', 'Page not found');
   }
 
   protected function buildPager( Doctrine_Query $query, $page )
