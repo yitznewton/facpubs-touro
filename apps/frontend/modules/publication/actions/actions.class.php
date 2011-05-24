@@ -50,6 +50,7 @@ class publicationActions extends sfActions
       ;
     
     $this->publication_count = Doctrine_Core::getTable('Publication')->findAll()->count();
+    $this->getResponse()->setSlot('title', 'Faculty Publications');
   }
   
   public function executeStatistics( sfWebRequest $request )
