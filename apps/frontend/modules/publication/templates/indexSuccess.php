@@ -1,7 +1,12 @@
-<h1>Faculty Publications Database</h1>
+<h1>Faculty Publications</h1>
 
 <p>We are proud to host this database of works published by Touro faculty. To submit your work for inclusion, please
 <?php echo link_to('click here', 'http://www.tourolib.org/resources/faculty-publications') ?>.</p>
+
+<p class="publication-total">
+  Total number of publications:
+  <?php echo link_to( $publication_count, 'publication/statistics' ) ?>
+</p>
 
 <div id="publication-tabs">
 
