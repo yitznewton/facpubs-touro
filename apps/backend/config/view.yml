@@ -17,6 +17,7 @@ default:
     - /sfDoctrinePlugin/css/default.css
     - global.css
     - backend.css
+    - local-backend.css
 
   javascripts:
     - jquery-1.5.2.min.js

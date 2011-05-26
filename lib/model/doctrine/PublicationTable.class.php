@@ -13,7 +13,7 @@ class PublicationTable extends Doctrine_Table
 
     $q->leftJoin( "$p.PublicationType" );
     $q->leftJoin( "$p.Facultys fac" );
-    $q->orderBy( "$p.citation_stripped asc" );
+    $q->orderBy( "$p.publication_date desc, $p.citation_stripped asc" );
 
     return $q;
   }

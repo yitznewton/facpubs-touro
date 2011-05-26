@@ -29,6 +29,9 @@ class PublicationFormFilter extends BasePublicationFormFilter
     ));
 
     $this->validatorSchema['facultys_list'] = new sfValidatorPass(array('required' => false));
+    
+    // Touro-specific
+    $this->widgetSchema['citation_stripped']->setOption( 'with_empty', false );
   }
 
   public function addSubjectsListColumnQuery( Doctrine_Query $query, $field, $values )
