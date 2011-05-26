@@ -13,6 +13,7 @@
 <ul>
   <li><a href="#faculty">By Faculty</a></li>
   <li><a href="#publications">By Publication</a></li>
+  <li><a href="#year">By Year</a></li>
 </ul>
 
 <div id="faculty">
@@ -47,4 +48,9 @@
 
 </div>
 
+<div id="year">
+<?php include_partial( 'publication/byYear' ) ?>
+</div>
+
+  
 </div>
