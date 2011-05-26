@@ -25,18 +25,19 @@ generator:
         facultys_list: { label: Faculty }
       list:
         display:
-          - =citation_teaser
-          - publication_type_string
+          - =citation
           - publication_date
-          - faculty_string
         table_method: backendIndex
+        max_per_page: 100
       filter:
         display:
           - citation_stripped
-          - facultys_list
-          - publication_date
-          - subjects_list
-          - publication_type_id
       form:    ~
-      edit:    ~
+      edit:
+        display:
+          - citation
+          - publication_date
+          - publication_type_id
+          - subjects_list
+          - _facultys_list
       new:     ~

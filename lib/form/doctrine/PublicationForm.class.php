@@ -25,7 +25,10 @@ class PublicationForm extends BasePublicationForm
       'theme'  => 'advanced',
       'config' => '
         plugins: "paste",
-        theme_advanced_buttons1: "bold,italic,separator,undo,redo,separator,cleanup,separator,link,unlink",
+        paste_remove_styles: true,
+        paste_remove_spans: true,
+        paste_text_sticky_default: true,
+        theme_advanced_buttons1: "bold,italic,separator,undo,redo,separator,link,unlink",
         theme_advanced_buttons2: "",
         theme_advanced_buttons3: "",
         theme_advanced_path: false
@@ -44,16 +47,6 @@ class PublicationForm extends BasePublicationForm
     $this->widgetSchema['facultys_list']->setOption('order_by', array('last_name asc, first_name asc', ''));
 
     sfProjectConfiguration::getActive()->loadHelpers('Url');
-
-    $this->widgetSchema['facultys_list'] = new ynWidgetAjaxAutocomplete(
-      array(
-        'noscript_widget' => $this->widgetSchema['facultys_list'],
-        'source'          => url_for( 'ynwidgetajax/faculty' ),
-        'item_route'      => url_for( 'faculty/edit?id=999999' ),
-        'aux_url'         => url_for( 'faculty/new' ),
-        'aux_link_text'   => 'Create a new faculty',
-      )
-    );
 
     $this->validatorSchema['citation'] = new sfValidatorString( array(
       'required' => true,

@@ -1,0 +1,11 @@
+#sf_admin_bar{
+  float: none;
+  margin-left: 0;
+}
+#publication_facultys_list{
+  height: 20em;
+}
+.publication-faculty-links{
+  padding-left: 9em;
+  margin-left: 1em;
+}

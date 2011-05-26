@@ -4,6 +4,9 @@
 #publication-tabs{
   margin: 2em 0 0;
 }
+#input-by-year{
+  width: 6em;
+}
 .frontend-publication-filter{
   border: 1px solid #ccc;
   margin-top: 0.6em;

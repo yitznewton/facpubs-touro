@@ -43,6 +43,23 @@ class publicationActions extends autoPublicationActions
     $this->sort = $this->getSort();
   }
 
+  public function executeNew( sfWebRequest $request )
+  {
+    $this->publication = new Publication();
+    
+    $faculty_collection = Doctrine_Core::getTable('Faculty')
+      ->createQuery('f')
+      ->where('f.id = ?', $request->getParameter('faculty'))
+      ->execute()
+      ;
+    
+    if ( $faculty_collection->count() ) {
+      $this->publication->setFacultys( $faculty_collection );
+    }
+    
+    $this->form = new PublicationForm( $this->publication );
+  }
+  
   protected function buildFacultyQuery( $faculty_id )
   {
     // override last filter settings stored in session

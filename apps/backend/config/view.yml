@@ -17,10 +17,11 @@ default:
     - /sfDoctrinePlugin/css/default.css
     - global.css
     - backend.css
+    - local-backend.css
 
   javascripts:
     - jquery-1.5.2.min.js
-    - tinymce/jscripts/tiny_mce/tiny_mce.js
+    - tinymce-3.4.2/tiny_mce.js
     - backend.js
 
   has_layout:     true
