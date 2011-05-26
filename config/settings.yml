@@ -1,5 +1,0 @@
-all:
-  .settings:
-    enabled_modules:
-      - ynWidgetAjaxAutocompleteDoctrine
-      # - ynWidgetAjaxAutocompletePropel
