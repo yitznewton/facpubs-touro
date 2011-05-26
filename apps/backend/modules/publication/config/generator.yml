@@ -33,5 +33,11 @@ generator:
         display:
           - citation_stripped
       form:    ~
-      edit:    ~
+      edit:
+        display:
+          - citation
+          - publication_date
+          - publication_type_id
+          - subjects_list
+          - _facultys_list
       new:     ~
