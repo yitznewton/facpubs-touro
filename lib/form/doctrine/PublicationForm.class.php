@@ -45,16 +45,6 @@ class PublicationForm extends BasePublicationForm
 
     sfProjectConfiguration::getActive()->loadHelpers('Url');
 
-    $this->widgetSchema['facultys_list'] = new ynWidgetAjaxAutocomplete(
-      array(
-        'noscript_widget' => $this->widgetSchema['facultys_list'],
-        'source'          => url_for( 'ynwidgetajax/faculty' ),
-        'item_route'      => url_for( 'faculty/edit?id=999999' ),
-        'aux_url'         => url_for( 'faculty/new' ),
-        'aux_link_text'   => 'Create a new faculty',
-      )
-    );
-
     $this->validatorSchema['citation'] = new sfValidatorString( array(
       'required' => true,
     ));
