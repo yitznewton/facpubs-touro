@@ -35,6 +35,10 @@
             'publication/index?faculty='.$faculty->getId() ) ?>
         </div>
         <?php endif; ?>
+        
+        <div>
+          <?php echo link_to('Add publication', 'publication/new?faculty='.$faculty->getId()) ?>
+        </div>
       </div>
     </div>
   </div>
