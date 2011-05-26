@@ -1,0 +1,164 @@
+# ynWidgetAjaxAutocomplete plugin (for symfony 1.3 - 1.4) #
+
+The `ynWidgetAjaxAutocompletePlugin` is a symfony plugin that provides an AJAX
+autocomplete replacement for `sfWidgetForm*Choice`. It uses the jQueryUI
+Autocomplete widget.
+
+## Installation ##
+
+  * Install the plugin (via a package - **not currently available**)
+
+        symfony plugin:install ynWidgetAjaxAutocompletePlugin
+
+  * Install the plugin (via Subversion checkout)
+
+        svn co http://svn.symfony-project.com/plugins/ynWidgetAjaxAutocompletePlugin/tags/0.1.0b1 plugins/ynWidgetAjaxAutocompletePlugin
+
+  * Activate the plugin in your project's `config/ProjectConfiguration.class.php`
+
+        class ProjectConfiguration extends sfProjectConfiguration
+        {
+          public function setup()
+          {
+            $this-&gt;enablePlugins(array(
+              &#039;sfDoctrinePlugin&#039;,
+              &#039;ynWidgetAjaxAutocompletePlugin&#039;,
+              &#039;...&#039;
+            ));
+          }
+        }
+
+  * Enable jQuery in your application via `view.yml` (you may also
+want/need to maintain a local copy):
+
+        javascripts:
+          - https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js
+
+  * Publish assets
+
+        symfony plugin:publish-assets
+
+  * Clear your cache
+
+        symfony cc
+
+## Utilization ##
+
+To implement the plugin to your form:
+
+  * You will need an AJAX handler to populate the autocomplete.
+If you wish to use the included AJAX actions, enable the appropriate module
+in the plugin's `settings.yml` (see the example below). The Propel version
+has not yet been written,
+but it will be easy to create (just write one generic action), if you are
+using Propel. Alternately can also enable the AJAX module at the application level,
+in your application's `settings.yml`.
+
+        all:
+          .settings:
+            enabled_modules:
+              - ynWidgetAjaxAutocompleteDoctrine
+              # - ynWidgetAjaxAutocompletePropel
+
+  * Make your `Doctrine_Table` or `*Peer` class implement
+ynWidgetAjaxTable, and write `retrieveForYnAjax(). The AJAX action
+will supply these parameters:
+    * `term` - the value to match
+    * `limit` - the greatest number of results to return
+    * `not` - keys to exclude, separated by commas
+
+            class PersonTable extends Doctrine_Table implements ynWidgetAjaxTable
+            {
+              /**
+               * Returns a JSON-encoded array of persons based on an AJAX-requested query
+               *
+               * @param string $term
+               * @param int $limit
+               * @param array $not Exclude these IDs
+               */
+              public function retrieveForYnAjax( $term, $limit = 10, array $not = array() )
+              {
+                $q = self::getInstance()
+                  ->createQuery('p')
+                  ->where('p.name LIKE ?', $term.'%')
+                  ->limit( $limit )
+                  ->orderBy('p.last_name, p.first_name ASC')
+                  ;
+
+                if ( $not ) {
+                  $q->whereNotIn('p.id', $not);
+                }
+
+                return $q->execute();
+              }
+
+
+  * Now, add the widget to your form, with some options. The autocomplete
+will visually replace the default widget on the page, but you must pass
+that widget as the `noscript_widget` option. This allows the plugin's
+Javascript to extract data from the stock `select` element, as well as
+providing for graceful degradation.
+    * Supply the route of the AJAX action as `source`. Include the `not`
+parameter as comma-separated IDs, if you wish to exclude one or more records.
+This is useful if you are dealing with a nested relation, to avoid associating
+the record with itself.
+    * Supply a route for linking to the referenced record as `item_route`. The
+Javascript will append `?id=12345` to the value, so your routing must be able
+to work with this.
+    * Supply a URL for a link next to the widget, e.g. to create a new
+record of the referenced class, as `aux_url`, and the text of the link as
+`aux_link_text` (optional)
+
+            /* in FooForm */
+
+            // handy for composing paths
+            sfProjectConfiguration::getActive()->loadHelpers('Url');
+
+            $this_id = $this->getObject()->getId();
+
+            $this->widgetSchema['animals_list'] = new ynWidgetAjaxAutocomplete(
+              array(
+                'noscript_widget' => $this->widgetSchema['animals_list'],
+                'source'          => url_for( 'ynwidgetajax/animal' ),
+                'item_route'      => url_for( 'animal/edit' ),
+                'aux_url'         => url_for( 'animal/new' ),
+                'aux_link_text'   => 'Create a new animal',
+              )
+            );
+
+And that's it! You should now have a working AJAX autocomplete widget on
+your form.
+
+## jQueryUI ##
+
+See also
+
+  * http://jqueryui.com/
+  * http://docs.jquery.com/UI/Autocomplete
+
+Since this plugin extends the jQueryUI Autocomplete widget, you can easily
+substitute the theme of your choosing. Pass the path of your main theme CSS
+file as the `theme_css` option.
+
+The included jQueryUI library contains only the widgets necessary for the
+plugin. If you need other widgets, you can change the path to the jQueryUI
+library, or remove it entirely if you have loaded it via `view.yml` or
+some other means. Pass either the path or `null` as the `jqueryui_js`
+option.
+
+You can pass options to the jQueryUI Autocomplete widget itself as
+`autocomplete_options`.
+
+For example:
+
+        $this->widgetSchema['animals_list'] = new ynWidgetAjaxAutocomplete(
+          array(
+            'noscript_widget' => $this->widgetSchema['animals_list'],
+            'source'          => url_for( 'ynwidgetajax/animal' ),
+            'item_url'        => url_for( 'animal/edit?id=9999999999' ),
+            'aux_url'         => url_for( 'animal/new' ),
+            'theme_css'       => '/path/to/my/jquery-ui.css',
+            'jqueryui_js'     => null,  // will not load jQueryUI from this plugin
+            'autocomplete_options' => array( 'minLength' => 4 ),
+          )
+        );
