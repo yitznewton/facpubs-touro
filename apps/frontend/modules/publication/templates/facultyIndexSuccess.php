@@ -4,10 +4,6 @@
 
 <h2>Publications for <?php echo $faculty->getFirstName() ?> <?php echo $faculty->getLastName() ?></h2>
 
-<?php if ( $pager->haveToPaginate() ): ?>
-<?php include_partial('publication/facultyIndexPagination', array('pager' => $pager, 'route' => $route)) ?>
-<?php endif; ?>
-
 <?php if ( $pager->getLastPage() === 0 ): ?>
 <p>No publications were found matching your search.</p>
 <?php else: ?>
