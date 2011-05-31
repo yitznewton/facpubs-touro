@@ -5,7 +5,7 @@
 <h2>Publications for <?php echo $faculty->getFirstName() ?> <?php echo $faculty->getLastName() ?></h2>
 
 <?php if ( $pager->haveToPaginate() ): ?>
-<?php include_partial('publication/pagination', array('pager' => $pager, 'filter_params' => $filter_params)) ?>
+<?php include_partial('publication/facultyIndexPagination', array('pager' => $pager, 'route' => $route)) ?>
 <?php endif; ?>
 
 <?php if ( $pager->getLastPage() === 0 ): ?>
@@ -15,5 +15,5 @@
 <?php endif; ?>
 
 <?php if ( $pager->haveToPaginate() ): ?>
-<?php include_partial('publication/pagination', array('pager' => $pager, 'filter_params' => $filter_params)) ?>
+<?php include_partial('publication/facultyIndexPagination', array('pager' => $pager, 'route' => $route)) ?>
 <?php endif; ?>
