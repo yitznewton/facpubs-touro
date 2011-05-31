@@ -101,6 +101,8 @@ class publicationActions extends sfActions
     }
 
     $this->buildPager( $query, $page );
+    $this->route = 'publication/facultyIndex?slug='
+                   . $request->getParameter('slug');
   }
   
   public function execute404( sfWebRequest $request )
