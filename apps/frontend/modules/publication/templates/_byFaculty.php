@@ -3,7 +3,6 @@
 
   <form id="faculty-autocomplete-form" action="<?php echo url_for('publication/facultyIndex') ?>" method="GET">
     <input type="text" name="faculty" class="autocomplete" id="faculty-autocomplete" />
-    <input type="submit" id="faculty-autocomplete-submit" value="Submit" />
     <span class="metadata" id="faculty-autocomplete-ajax-path" title="<?php echo url_for('faculty/autocomplete') ?>" />
   </form>
 
