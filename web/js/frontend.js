@@ -3,7 +3,6 @@ $( function() {
 
   if ( source ) {
     FP.$$('faculty-autocomplete-container').style.display = 'block';
-    FP.$$('faculty-autocomplete-submit').style.display = 'none';
 
     $( FP.$$('faculty-autocomplete') ).autocomplete({
       source: source,
@@ -26,9 +25,9 @@ $( function() {
         var url = matches[1] + 'publications/faculty/' + item_id;
                 
         window.location = url;
-        
-        return false;
       }
+        
+      return false;
     };
 
     var $tabs = $('#publication-tabs').tabs({
