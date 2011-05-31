@@ -92,7 +92,7 @@ class publicationActions extends sfActions
       ->leftJoin('p.Facultys f')
       ->where('f.slug = ?', $request->getParameter('slug'))
       ->andWhere('f.deleted_at IS NULL')
-      ->orderBy('p.citation_stripped asc')
+      ->orderBy('p.publication_date desc, p.citation_stripped asc')
       ;
 
     $page = $request->getParameter( 'page', 1 );
