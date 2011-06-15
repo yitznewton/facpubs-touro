@@ -24,7 +24,7 @@
         <ul>
           <?php for ( $i = 0; $i < $publications->count() && $i < 4; $i++ ): ?>
           <?php // TODO: some broken characters in citation cause whole field to be scrubbed by escaper ?>
-          <li><?php echo link_to( $publications[$i]->getCitationTeaser(),
+          <li><?php echo link_to( $publications[$i]->getRaw('citation'),
             'publication/edit?id='.$publications[$i]->getId() ) ?></li>
           <?php endfor; ?>
         </ul>
