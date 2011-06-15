@@ -22,19 +22,12 @@
       <span class="label">Publications</span>
       <div class="content">
         <ul>
-          <?php for ( $i = 0; $i < $publications->count() && $i < 4; $i++ ): ?>
+          <?php foreach ( $publications as $publication ): ?>
           <?php // TODO: some broken characters in citation cause whole field to be scrubbed by escaper ?>
-          <li><?php echo link_to( $publications[$i]->getRaw('citation'),
-            'publication/edit?id='.$publications[$i]->getId() ) ?></li>
-          <?php endfor; ?>
+          <li><?php echo link_to( $publication->getRaw('citation'),
+            'publication/edit?id='.$publication->getId() ) ?></li>
+          <?php endforeach; ?>
         </ul>
-        
-        <?php if ( $publications->count() > 4 ): ?>
-        <div>
-          <?php echo link_to('Show all',
-            'publication/index?faculty='.$faculty->getId() ) ?>
-        </div>
-        <?php endif; ?>
         
         <div>
           <?php echo link_to('Add publication', 'publication/new?faculty='.$faculty->getId()) ?>
