@@ -19,8 +19,8 @@ Installation
 
 - Update a plugin from github:
 
-    git submodule init
-    git submodule update
+        git submodule init
+        git submodule update
 
 - Create data directory FACPUBS/data/sqlite
 
@@ -37,8 +37,8 @@ Installation
 
 - Run some symfony commands to initialize your installation:
 
-    php symfony plugin:publish-assets
-    php symfony doctrine:build --all
+        php symfony plugin:publish-assets
+        php symfony doctrine:build --all
 
 - Make sure your webserver has read-write privileges
 
