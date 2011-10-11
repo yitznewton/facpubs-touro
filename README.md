@@ -35,6 +35,14 @@ Installation
 - If you wish to use a non-default data store, configure it in
   `FACPUBS/config/databases.yml`
 
+- In some versions of PHP (e.g. 5.2.17), you will need to change the
+  following line in `FACPUBS/lib/model/doctrine/FacultyTable.class.php`:
+
+        public function retrieveForYnAjax( $term, $limit = 10, array $not = array() )
+  to
+
+        public function retrieveForYnAjax( $term, $limit, array $not )
+
 - Run some symfony commands to initialize your installation:
 
         php symfony plugin:publish-assets
