@@ -52,6 +52,12 @@ For backend access, use http://yoursite.com/backend.php
 No authentication is included with facpubs; we used regular HTTP Basic
 authentication.
 
+Start by adding subjects, schools, and publication types. Then you can add
+faculty and publications.
+
+Slugs refer to the URL-friendly version of a string; for example, the slug
+for a school `School of Health Sciences` might be `health-sciences`
+
 Theming
 -------
 
