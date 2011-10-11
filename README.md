@@ -22,18 +22,18 @@ Installation
         git submodule init
         git submodule update
 
-- Create data directory FACPUBS/data/sqlite
+- Create data directory `FACPUBS/data/sqlite`
 
-- Copy or link the SYMFONY/data/web/sf directory into FACPUBS/web
+- Copy or link the `SYMFONY/data/web/sf` directory into FACPUBS/web`
 
 - Download the latest symfony 1.4 from
   http://www.symfony-project.org/installation/1_4
 
 - Specify the path to your symfony installation in
-  FACPUBS/config/ProjectConfiguration.class.php
+  `FACPUBS/config/ProjectConfiguration.class.php`
 
 - If you wish to use a non-default data store, configure it in
-  FACPUBS/config/databases.yml
+  `FACPUBS/config/databases.yml`
 
 - Run some symfony commands to initialize your installation:
 
@@ -42,7 +42,7 @@ Installation
 
 - Make sure your webserver has read-write privileges
 
-- Point your webserver at FACPUBS/web
+- Point your webserver at `FACPUBS/web`
 
 Operation
 ---------
@@ -62,12 +62,13 @@ Theming
 -------
 
 You can edit the frontend template at
-FACPUBS/apps/frontend/templates/layout.php
+`FACPUBS/apps/frontend/templates/layout.php`
 
 Theming for the tabs is available at
 http://jqueryui.com/themeroller/
 
-Selecting the options may be more involved that it seems it should.
+Selecting the options for the themeroller may be more involved that it
+seems it should; if you're stuck, drop us a line.
 
 Contact
 -------
