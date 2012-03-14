@@ -7,13 +7,27 @@ class PublicationFrontendFilterForm extends sfFormSymfony
     $this->setWidgets(array(
       'q'       => new sfWidgetFormInputText(array('label' => 'Words')),
       'year'    => new sfWidgetFormInputText(),
+      'lang'    => new sfWidgetFormDoctrineChoice(array(
+        'label'     => 'Language',
+        'multiple'  => false,
+        'model'     => 'Language',
+        'order_by'  => array('name', 'asc'),
+        'add_empty' => true,
+      )),
       'subject' => new sfWidgetFormDoctrineChoice(array(
         'multiple'  => false,
         'model'     => 'Subject',
         'order_by'  => array('name', 'asc'),
         'add_empty' => true,
       )),
+      'school' => new sfWidgetFormDoctrineChoice(array(
+        'multiple'  => false,
+        'model'     => 'School',
+        'order_by'  => array('name', 'asc'),
+        'add_empty' => true,
+      )),
       'type'        => new sfWidgetFormDoctrineChoice(array(
+        'multiple'  => false,
         'model'     => 'PublicationType',
         'add_empty' => true,
         'order_by'  => array('name', 'asc'),
@@ -24,7 +38,9 @@ class PublicationFrontendFilterForm extends sfFormSymfony
       'q'       => new sfValidatorPass(array('required' => false)),
       'year'    => new sfValidatorPass(array('required' => false)),
       'type'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'PublicationType', 'column' => 'id')),
+      'lang'    => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Language', 'required' => false)),
       'subject' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Subject', 'required' => false)),
+      'school' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'School', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('%s');
