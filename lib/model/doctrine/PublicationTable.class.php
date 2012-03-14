@@ -49,6 +49,12 @@ class PublicationTable extends Doctrine_Table
         ->andWhere('s.id = ?', $filters->getValue('subject') );
     }
 
+    if ( $filters->getValue('school') !== '' && $filters->getValue('school') !== null ) {
+      $q->leftJoin('p.Facultys f')
+        ->leftJoin('f.Schools sc')
+        ->andWhere('sc.id = ?', $filters->getValue('school') );
+    }
+
     if ( $filters->getValue('year') !== '' && $filters->getValue('year') !== null ) {
       $q->andWhere('p.publication_date = ?', $filters->getValue('year') );
     }
