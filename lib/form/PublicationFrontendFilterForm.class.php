@@ -31,7 +31,7 @@ class PublicationFrontendFilterForm extends sfFormSymfony
       'q'       => new sfValidatorPass(array('required' => false)),
       'year'    => new sfValidatorPass(array('required' => false)),
       'type'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'PublicationType', 'column' => 'id')),
-      'subject' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Language', 'required' => false)),
+      'lang'    => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Language', 'required' => false)),
       'subject' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Subject', 'required' => false)),
     ));
 

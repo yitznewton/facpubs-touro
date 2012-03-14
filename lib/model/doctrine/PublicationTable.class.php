@@ -39,6 +39,11 @@ class PublicationTable extends Doctrine_Table
       $q->andWhere('p.publication_type_id = ?', $filters->getValue('type') );
     }
 
+    if ( $filters->getValue('lang') !== '' && $filters->getValue('lang') !== null ) {
+      $q->leftJoin('p.Languages l')
+        ->andWhere('l.id = ?', $filters->getValue('lang') );
+    }
+
     if ( $filters->getValue('subject') !== '' && $filters->getValue('subject') !== null ) {
       $q->leftJoin('p.Subjects s')
         ->andWhere('s.id = ?', $filters->getValue('subject') );
