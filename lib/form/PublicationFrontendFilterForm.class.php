@@ -7,6 +7,13 @@ class PublicationFrontendFilterForm extends sfFormSymfony
     $this->setWidgets(array(
       'q'       => new sfWidgetFormInputText(array('label' => 'Words')),
       'year'    => new sfWidgetFormInputText(),
+      'lang'    => new sfWidgetFormDoctrineChoice(array(
+        'label'     => 'Language',
+        'multiple'  => false,
+        'model'     => 'Language',
+        'order_by'  => array('name', 'asc'),
+        'add_empty' => true,
+      )),
       'subject' => new sfWidgetFormDoctrineChoice(array(
         'multiple'  => false,
         'model'     => 'Subject',
@@ -24,6 +31,7 @@ class PublicationFrontendFilterForm extends sfFormSymfony
       'q'       => new sfValidatorPass(array('required' => false)),
       'year'    => new sfValidatorPass(array('required' => false)),
       'type'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => 'PublicationType', 'column' => 'id')),
+      'subject' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Language', 'required' => false)),
       'subject' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Subject', 'required' => false)),
     ));
 
