@@ -45,6 +45,7 @@ Installation
 
 - Run some symfony commands to initialize your installation:
 
+        php symfony plugin:install sfFormExtraPlugin
         php symfony plugin:publish-assets
         php symfony doctrine:build --all
 
