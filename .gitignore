@@ -1,0 +1,8 @@
+*.swp
+base
+
+/cache
+/data
+/log
+/plugins
+
