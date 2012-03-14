@@ -21,6 +21,7 @@ generator:
         faculty_string: { label: Faculty }
         publication_type_id: { label: Type }
         publication_date: { label: Date }
+        languages_list: { label: Language }
         subjects_list: { label: Subject }
         facultys_list: { label: Faculty }
       list:
@@ -35,6 +36,7 @@ generator:
           - citation_stripped
           - facultys_list
           - publication_date
+          - languages_list
           - subjects_list
           - publication_type_id
       form:    ~
