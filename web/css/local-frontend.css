@@ -24,18 +24,19 @@
   font-size: 0.8em;
   padding: 1em 0.4em;
 }
+.frontend-publication-filter-fields.suppl{
+  padding: 0.8em 0 0;
+  clear: both;
+}
 .frontend-publication-filter-fields select{
   margin: 0;  /* Chrome */
-  width: 3em !important;
 }
 .frontend-publication-filter-fields li{
   padding: 0 0.4em;
 }
-#filter-field-q{
-  width: 8em;
-}
-#filter-field-q:focus{
-  width: 16em;
+.filter-submit-container{
+  float: right;
+  padding: 0 0.4em 0 0;
 }
 #filter-submit{
   margin-left: 0.6em;

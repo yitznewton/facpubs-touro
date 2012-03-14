@@ -23,12 +23,13 @@
 <div id="publications">
 
 <form class="frontend-publication-filter">
-  <ul class="frontend-publication-filter-fields">
-  <?php echo $filters ?>
-  </ul>
+  <div class="filter-submit-container">
+    <input type="submit" id="filter-submit" value="Submit" />
+    <?php echo link_to( 'Reset', 'publication/index') ?>
+  </div>
+
+  <?php include_partial('publication/filters', array('filters' => $filters)) ?>
   
-  <input type="submit" id="filter-submit" value="Submit" />
-  <?php echo link_to( 'Reset', 'publication/index') ?>
   <div class="clear"></div>
 </form>
 
