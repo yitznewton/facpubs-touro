@@ -5,7 +5,7 @@ test:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn: sqlite:%SF_DATA_DIR%/sqlite/test.db
+      dsn: sqlite::memory:
 
 all:
   doctrine:
