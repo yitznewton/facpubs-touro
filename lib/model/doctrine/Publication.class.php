@@ -20,12 +20,9 @@ class Publication extends BasePublication
     $v = strip_tags( $v );
     $v = Doctrine_Inflector::unaccent( $v );
 
-    if (function_exists('mb_strtolower')) {
-      $v = mb_strtolower( $v );
-    }
-    else {
-      $v = strtolower( $v );
-    }
+    // mb_strtolower not working with Russian;
+    // using regular
+    $v = strtolower( $v );
 
     $v = preg_replace( '/[^\w\p{L}\p{N}]/u', ' ', $v );
     $v = preg_replace( '/\s{2,}/', ' ', $v );
